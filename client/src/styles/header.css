@@ -1,0 +1,94 @@
+@media  screen and (min-width: 320px) and (max-width: 480px) {
+    header {
+        height: 200px;  
+        text-align: center;
+        margin-top: 40px; 
+    }
+    .firstNav{
+        margin-top: 20px;
+    }
+    .secondNav{
+        margin-top: 20px;
+    }
+    .firstNav > * , .secondNav > * {
+        margin-top: 10px;
+    }
+
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    header {
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .firstNav{
+        margin-top: 10px;
+    }
+    .secondNav {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+
+    header {
+        height: 50px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav {
+        display: flex;
+        justify-content: space;
+    }
+    header > h1 {
+        font-size: 1.5rem;   
+    }
+
+    .firstNav > * {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .secondNav {
+        margin-left: 30px;
+    }
+    .secondNav > * {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    
+}
+
+@media screen and (min-width: 993px) {
+    header {
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    header > h1 {
+        font-size: 1.3rem;
+        margin-left: 20px;
+    }
+    nav {
+        display: flex;
+    }   
+
+    .firstNav {
+        margin-right: 40px;
+    }
+    .secondNav {
+        margin-right: 40px;
+    }
+    .firstNav > *, .secondNav > * {
+        display: inline-block;
+        margin-left: 15px;
+        font-size: 1rem;
+    }
+}
