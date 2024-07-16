@@ -74,37 +74,4 @@ describe('Products page', () => {
             });
         });
     });
-    descibe("authenticated tests", () => {
-        let mock;
-        beforeEach(() => {
-            mock = new MockAdapter(axios);
-            Cookies.set("auth-token", "dummy-token");
-
-            mock.onGet("http://localhost:6543/api/v1/products").reply(200, [
-                {
-                    description: "first items description",
-                    id: 1,
-                    img: "http://image.com/image1-png",
-                    item_name: "first item",
-                    price: "1",
-                    stock: 100
-                },
-                {
-                    description: "second item's description ",
-                    id: 2,
-                    img: "http://image.com/image2-png",
-                    item_name: "second item",
-                    price: "2",
-                    stock: 200
-                }
-            ]);
-        });
-        
-        afterEach(() => {
-            mock.reset();
-            Cookies.remove("auth-token");
-        });
-
-        
-    })
 });

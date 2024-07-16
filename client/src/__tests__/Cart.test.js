@@ -253,21 +253,6 @@ describe("cart", () => {
 
     });
 
-    describe("cart errors", () => {
-        let mock;
-        beforeEach(() => {
-
-            mock = new MockAdapter(axios);
-            Cookies.set("auth-token", "dummy-token");
-
-        })
-
-        afterEach(() => {
-            mock.reset();
-            Cookies.remove("auth-token");
-        })
-    });
-
 });
 
         
