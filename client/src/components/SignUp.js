@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { ExclamationTriangle, CheckSquare } from 'react-bootstrap-icons';
 
 import '../styles/general.css';
@@ -10,8 +10,8 @@ import '../styles/signup.css';
 function SignUp() {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
-  const [visibleError, setVisibileError] = useState(false);
-  const [visibleSuccess, setVisibileSuccess] = useState(false);
+  const [visibleError, setVisibleError] = useState(false);
+  const [visibleSuccess, setVisibleSuccess] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
 
@@ -37,37 +37,32 @@ function SignUp() {
   const signUp = async (e) => {
     e.preventDefault();
     setError('');
-    setVisibileError(false);
+    setVisibleError(false);
     setSuccess(false);
-    setVisibileSuccess(false);
+    setVisibleSuccess(false);
 
     const { username, email, password, confirmPassword } = formValues;
 
     if (!username) {
       setError('Username cannot be left blank.');
-      setVisibileError(true);
       return;
     }
     if (!email) {
       setError('Email cannot be left blank.');
-      setVisibileError(true);
       return;
     }
     if (!password) {
       setError('Please provide a password.');
-      setVisibileError(true);
       return;
     }
 
     if (!confirmPassword) {
       setError('Please confirm your password.');
-      setVisibileError(true);
       return;
     }
 
     if (password !== confirmPassword) {
       setError('Provided passwords do not match.');
-      setVisibileError(true);
       return;
     }
 
@@ -76,31 +71,31 @@ function SignUp() {
         username,
         email,
         password
-      })
+      }, { withCredentials: true })
       setSuccess(true);
-      let token = createUser.data.token;
+      // let token = createUser.data.token;
       setTimeout(() => {
-        setVisibileSuccess(true)
+        setVisibleSuccess(true)
       }, 200)
 
     } catch (err) {
-      const inputErrors = err.response.data.errors;
+      const inputErrors = err.response?.data?.errors ?? "null";
       if (inputErrors && inputErrors.length > 0 && inputErrors[0]['msg']) {
-        setError(err.response.data.errors.map(err => {
+        setError(inputErrors.map(err => {
           return err.msg
         }));
-      } else {  
-        setError(err.response.data.error);
+      } else {
+        setError(err?.response?.data?.error ?? "Registration Failed.");
       }
-      setTimeout(() => {
-        setVisibileError(true);
-      }, 200)
     }
   };
 
+
   useEffect(() => {
     if (error) {
-      console.log(error);
+      setTimeout(() => {
+        setVisibleError(true);
+      }, 300)
     }
   }, [error])
 
@@ -112,6 +107,7 @@ function SignUp() {
     }
   }, [visibleSuccess])
 
+  //debugging 
 
   return (
 
@@ -165,9 +161,13 @@ function SignUp() {
           <input type='password' name='confirmPassword' id='confirm-password' className='password-input' onChange={handleChange} />
         </div>
 
-        <button id='submit' type='submit'>Submit</button>
+        <button id='submit' type='submit' data-testid='submit-button'>Submit</button>
 
       </form>
+
+      <NavLink to="../login">
+        <p className='navigate-to-signup-login' style={{ marginTop: 30, color: "black", paddingLeft: 10, paddingRight: 10 }}>Already have an account? click here to log in.</p>
+      </NavLink>
     </div>
   )
 }

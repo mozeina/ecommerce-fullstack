@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/about.css';
 import '../styles/general.css';
+import { ExclamationTriangle } from 'react-bootstrap-icons';
 
 
 function About() {
@@ -12,8 +13,12 @@ function About() {
   }, []);
 
   return (
-    <div className={`about-page poiret-one fade-in2 ${visible ? 'visible' : ''}`} aria-label='Our About Page'>
+    <div className={`about-page poiret-one fade-in2 ${visible ? 'visible' : ''}`} aria-label='Our About Page'>  
 
+    <section aria-label="warning">
+      <ExclamationTriangle style={{marginBottom: -3, marginRight: 10, display: 'inline'}}/>
+      <h5 style={{display: "inline"}}>THIS IS A VIRTUAL SITE, SERVICES AND PRODUCTS ARE NOT REAL, KEEP THIS IN MIND WHILE BROWSING THE SITE.</h5>
+    </section>
       <section aria-label='Our reason for starting!'>
         <h3 >Passion for Healthy Hair (Established in 2024)</h3>
 

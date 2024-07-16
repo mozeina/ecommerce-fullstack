@@ -1,0 +1,36 @@
+.checkout p {
+    padding : 7px 12px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgb(173, 134, 134);
+    display: inline-block;
+    transition: background-color ease .3s;
+}
+
+.checkout p:hover {
+    background-color:  rgb(172, 149, 149);
+    cursor: pointer;
+}
+
+.checkout button {
+    font-size: 1.6rem;
+    padding: 2px;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .checkout {
+        float: right;
+        margin-top: -50px;
+    }
+    
+}
+
+@media screen and (max-width: 991px) {
+
+    .checkout {
+        margin-top: 20px;
+    }
+}
