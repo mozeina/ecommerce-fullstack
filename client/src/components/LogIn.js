@@ -64,7 +64,7 @@ function LogIn() {
 
       setTimeout(() => {
         setVisibleSuccess(true);
-      }, 200)
+      }, 200);
 
     } catch (err) {
       const inputErrors = err.response?.data?.errors ?? "null";

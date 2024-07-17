@@ -102,15 +102,15 @@ function Products() {
         quantity: quantity
       }, { withCredentials: true });
       removeQuantityErrors(item);
-
-
+      
     } catch (err) {
+      console.log("we are getting an error", err); 
       if (err.code == "ERR_NETWORK") {
         return;
       }
-      else if (err.response.status === 401 ) {
+      else if (err?.response?.status && err.response.status === 401 ) {
         navigate("/login");
-      } else if (err.response.status === 400) {
+      } else if (err?.response?.status && err.response.status === 400) {
         quantityErrorSetter(item);
       } else {
         return;
