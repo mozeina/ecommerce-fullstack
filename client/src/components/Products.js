@@ -31,7 +31,7 @@ function Products() {
       const ourData = await axios.get('https://hhobackend.onrender.com/api/v1/products');
       setProducts(ourData.data);
       setHeaderUpdate(prev => !prev);
-      setIsLoading(false);
+
     } catch (err) {
       setError(true);
       setHeaderUpdate(prev => !prev);
@@ -46,17 +46,18 @@ function Products() {
   }, [])
 
 
-
-
   useEffect(() => {
-    setTimeout(() => {
-      setvisible1(true)
-    }, 100)
-  }, []);
+    if (products && products.length > 0) {
+      setIsLoading(false);
+      setTimeout(() => {
+        setvisible1(true)
+      }, 100)
+    }
+  }, [products])
+
 
   useEffect(() => {
     if (visible1 && products) {
-      setIsLoading(false);
       setTimeout(() => {
         setVisible2(true);
       }, 200)
@@ -104,11 +105,11 @@ function Products() {
       removeQuantityErrors(item);
 
     } catch (err) {
-      console.log("we are getting an error", err); 
+      console.log("we are getting an error", err);
       if (err.code == "ERR_NETWORK") {
         return;
       }
-      else if (err?.response?.status && err.response.status === 401 ) {
+      else if (err?.response?.status && err.response.status === 401) {
         navigate("/login");
       } else if (err?.response?.status && err.response.status === 400) {
         quantityErrorSetter(item);
