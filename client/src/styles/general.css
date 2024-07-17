@@ -119,6 +119,13 @@ ul {
     padding: 4px;
 }
 
+.about-page {
+    font-weight: 600;
+}
+.products-page {
+    font-weight: 600;
+}
+
 @media screen and (max-width: 572px) {
     .modal-content {
         padding: 20px;
