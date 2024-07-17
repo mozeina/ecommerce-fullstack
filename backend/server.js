@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 6543;
 
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://harrys-hair-oils.onrender.com' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(cookieParser());
 
 
