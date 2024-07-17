@@ -105,10 +105,15 @@ function Products() {
 
 
     } catch (err) {
-      if (err.response.status === 401) {
+      if (err.code == "ERR_NETWORK") {
+        return;
+      }
+      else if (err.response.status === 401 ) {
         navigate("/login");
       } else if (err.response.status === 400) {
         quantityErrorSetter(item);
+      } else {
+        return;
       }
     }
 
