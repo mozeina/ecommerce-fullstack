@@ -37,7 +37,7 @@
                 }
             })
             try {
-                await axios.put("http://localhost:6543/api/v1/cart/updateQuantity", {
+                await axios.put("https://hhobackend.onrender.com/api/v1/cart/updateQuantity", {
                     id: cartItem.id,
                     newQuantity: cartItem.quantity - 1
                 }, { withCredentials: true });
@@ -47,7 +47,7 @@
         };
 
         const incrementQuantity = async (cartItem) => {
-            const stockCheck = await axios.get(`http://localhost:6543/api/v1/products/${cartItem.id}`);
+            const stockCheck = await axios.get(`https://hhobackend.onrender.com/api/v1/products/${cartItem.id}`);
             if (stockCheck.data.stock <= cart.cart_items.find(item => item.id === cartItem.id).quantity) {
                 alert("Quantity exceeds current stock");
                 return;
@@ -67,7 +67,7 @@
                 }
             })
             try {
-                await axios.put("http://localhost:6543/api/v1/cart/updateQuantity", {
+                await axios.put("https://hhobackend.onrender.com/api/v1/cart/updateQuantity", {
                     id: cartItem.id,
                     newQuantity: cartItem.quantity + 1
                 }, { withCredentials: true });
@@ -77,7 +77,7 @@
         };
 
         const removeFromCart = async (item) => {
-            await axios.delete(`http://localhost:6543/api/v1/cart/removeFromCart/${item.id}`, {
+            await axios.delete(`https://hhobackend.onrender.com/api/v1/cart/removeFromCart/${item.id}`, {
                 withCredentials: true
             });
             getCartItems();
@@ -86,7 +86,7 @@
 
         async function getCartItems() {
             try {
-                const cart = await axios.get("http://localhost:6543/api/v1/cart", { withCredentials: true });
+                const cart = await axios.get("https://hhobackend.onrender.com/api/v1/cart", { withCredentials: true });
                 setCart(cart.data);
             } catch (err) {
                 if (err.code == "ERR_NETWORK" || err.response.request.status == 500) {

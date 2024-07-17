@@ -8,7 +8,7 @@ function Checkout() {
 
     const handleCheckout = async () => {
         try {
-            await axios.get("http://localhost:6543/api/v1/checkout", { withCredentials: true });
+            await axios.get("https://hhobackend.onrender.com/api/v1/checkout", { withCredentials: true });
         } catch (err) {  
             setError(err.error);
         }

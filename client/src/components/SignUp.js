@@ -67,7 +67,7 @@ function SignUp() {
     }
 
     try {
-      const createUser = await axios.post('http://localhost:6543/api/v1/users/register', {
+      const createUser = await axios.post('https://hhobackend.onrender.com/api/v1/users/register', {
         username,
         email,
         password

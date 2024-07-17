@@ -28,7 +28,7 @@ function Products() {
   const fetchData = async () => {
 
     try {
-      const ourData = await axios.get('http://localhost:6543/api/v1/products');
+      const ourData = await axios.get('https://hhobackend.onrender.com/api/v1/products');
       setProducts(ourData.data);
       setHeaderUpdate(prev => !prev);
       setIsLoading(false);
@@ -97,12 +97,12 @@ function Products() {
 
 
     try {
-      await axios.post("http://localhost:6543/api/v1/cart/addToCart", {
+      await axios.post("https://hhobackend.onrender.com/api/v1/cart/addToCart", {
         id: item.id,
         quantity: quantity
       }, { withCredentials: true });
       removeQuantityErrors(item);
-      
+
     } catch (err) {
       console.log("we are getting an error", err); 
       if (err.code == "ERR_NETWORK") {
@@ -136,7 +136,7 @@ function Products() {
   }
 
   const quantityErrorSetter = async (item) => {
-    let usersCart = await axios.get("http://localhost:6543/api/v1/cart", { withCredentials: true });
+    let usersCart = await axios.get("https://hhobackend.onrender.com/api/v1/cart", { withCredentials: true });
 
     setProducts(prev => {
       return [

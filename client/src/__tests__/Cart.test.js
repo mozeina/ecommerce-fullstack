@@ -22,7 +22,7 @@ describe("cart", () => {
             mock = new MockAdapter(axios);
             Cookies.set("auth-token", "dummy-token");
 
-            mock.onGet("http://localhost:6543/api/v1/cart").reply(200, { message: "empty cart" });
+            mock.onGet("https://hhobackend.onrender.com/api/v1/cart").reply(200, { message: "empty cart" });
         })
 
         afterEach(() => {
@@ -53,7 +53,7 @@ describe("cart", () => {
             mock = new MockAdapter(axios);
             Cookies.set("auth-token", "dummy-token");
 
-            mock.onGet("http://localhost:6543/api/v1/cart").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/cart").reply(200, {
                 cart_items: [
                     {
                         id: 1,
@@ -127,7 +127,7 @@ describe("cart", () => {
                 )
             });
 
-            mock.onGet("http://localhost:6543/api/v1/products/1").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products/1").reply(200, {
                 data: {
                     id: 1,
                     img: 'link/to/img1',
@@ -138,7 +138,7 @@ describe("cart", () => {
                 }
             });
 
-            mock.onGet("http://localhost:6543/api/v1/products/3").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products/3").reply(200, {
                 data: {
                     id: 3,
                     img: 'link/to/img3',
@@ -172,7 +172,7 @@ describe("cart", () => {
             });
 
 
-            mock.onGet("http://localhost:6543/api/v1/products/2").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products/2").reply(200, {
                 data: {
                     id: 2,
                     img: 'link/to/img2',
@@ -183,7 +183,7 @@ describe("cart", () => {
                 }
             });
 
-            mock.onGet("http://localhost:6543/api/v1/products/3").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products/3").reply(200, {
                 data: {
                     id: 3,
                     img: 'link/to/img3',
@@ -218,10 +218,10 @@ describe("cart", () => {
             });
 
 
-            mock.onDelete("http://localhost:6543/api/v1/cart/removeFromCart/3").reply(202, { "message": "success" });
-            mock.onDelete("http://localhost:6543/api/v1/cart/removeFromCart/2").reply(202, { "message": "success" });
+            mock.onDelete("https://hhobackend.onrender.com/api/v1/cart/removeFromCart/3").reply(202, { "message": "success" });
+            mock.onDelete("https://hhobackend.onrender.com/api/v1/cart/removeFromCart/2").reply(202, { "message": "success" });
 
-            mock.onGet("http://localhost:6543/api/v1/cart").reply(200, {
+            mock.onGet("https://hhobackend.onrender.com/api/v1/cart").reply(200, {
                 cart_items: [
                     {
                         id: 1,

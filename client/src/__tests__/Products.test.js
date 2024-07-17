@@ -20,7 +20,7 @@ describe('Products page', () => {
         });
 
         it('displays products when loaded', async () => {
-            mock.onGet("http://localhost:6543/api/v1/products").reply(200, [
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products").reply(200, [
                 {
                     description: "first items description",
                     id: 1,
@@ -57,7 +57,7 @@ describe('Products page', () => {
         });
 
         it("shows error page when failed to fetch products", async () => {
-            mock.onGet("http://localhost:6543/api/v1/products").reply(500, null);
+            mock.onGet("https://hhobackend.onrender.com/api/v1/products").reply(500, null);
 
             await act(async () => {
                 render(

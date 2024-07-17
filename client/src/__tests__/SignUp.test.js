@@ -129,7 +129,7 @@ describe("Sign Up", () => {
                 </MemoryRouter>
             )
 
-            mock.onPost("http://localhost:6543/api/v1/users/register").reply(400, { errors: [{ "msg": "test error for username less than 3 characters" }] });
+            mock.onPost("https://hhobackend.onrender.com/api/v1/users/register").reply(400, { errors: [{ "msg": "test error for username less than 3 characters" }] });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "us");
@@ -153,7 +153,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(400, { errors: [{ "msg": "Invalid email bro" }] });
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(400, { errors: [{ "msg": "Invalid email bro" }] });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username");
@@ -178,7 +178,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(400, { errors: [{ "msg": "password must be atleast 6 characters long" }] });
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(400, { errors: [{ "msg": "password must be atleast 6 characters long" }] });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username");
@@ -202,7 +202,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(400, { errors: [{ "msg": "password must NOT include spaces" }] });
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(400, { errors: [{ "msg": "password must NOT include spaces" }] });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username");
@@ -227,7 +227,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(409, { error: "user is already in the database" });
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(409, { error: "user is already in the database" });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username1");
@@ -251,7 +251,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(500, {});
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(500, {});
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username1");
@@ -312,7 +312,7 @@ describe("Sign Up", () => {
                 )
             })
 
-            mock.onPost('http://localhost:6543/api/v1/users/register').reply(201, {}, { "auth-token": "dummy-token" });
+            mock.onPost('https://hhobackend.onrender.com/api/v1/users/register').reply(201, {}, { "auth-token": "dummy-token" });
 
             await act(async () => {
                 userEvent.type(screen.getByLabelText(/Username:/i), "username");

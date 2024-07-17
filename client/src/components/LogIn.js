@@ -56,7 +56,7 @@ function LogIn() {
 
 
     try {
-      const retrieveUser = await axios.post('http://localhost:6543/api/v1/users/login', {
+      const retrieveUser = await axios.post('https://hhobackend.onrender.com/api/v1/users/login', {
         email,
         password
       }, { withCredentials: true })
@@ -72,7 +72,7 @@ function LogIn() {
         setError(err.response.data.errors.map(err => {
           return err.msg
         }));
-      } else {
+      } else {  
         setError(err.response?.data?.error ?? "Log In Failed.");
       }
     }

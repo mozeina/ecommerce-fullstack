@@ -28,7 +28,7 @@ function Header() {
 
     const checkAuthenticated = async () => {
         try {
-            const auth = await axios.get("http://localhost:6543/api/v1/checkAuth", { withCredentials: true });
+            const auth = await axios.get("https://hhobackend.onrender.com/api/v1/checkAuth", { withCredentials: true });
             setIsAuthenticated(true)
         } catch (err) {
             setIsAuthenticated(false);
@@ -45,7 +45,7 @@ function Header() {
 
     const handleLogoutConfirm = async () => {
         try {
-            await axios.get("http://localhost:6543/api/v1/users/logout", { withCredentials: true });
+            await axios.get("https://hhobackend.onrender.com/api/v1/users/logout", { withCredentials: true });
             setLoggedOut(true)
             setLoggedOutMessage("Logged out successfully.");
             setTimeout(() => {
